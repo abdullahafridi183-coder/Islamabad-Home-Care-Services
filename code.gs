@@ -7,7 +7,7 @@
 
 // ===== CONFIGURATION: replace these two values only =====
 const CONFIG = {
-  SPREADSHEET_ID: "YOUR_GOOGLE_SHEET_ID",
+  SPREADSHEET_ID: "1CqcsC-mJRNSaQxw5trXER4YQ2aNR7JAuHBbsWT5XSoY",
   SHEET_NAME: "Appointments"
 };
 // ========================================================
