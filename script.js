@@ -14,7 +14,7 @@ const CONFIG = {
     question: "Hello Islamabad Home Care Services, I have a question."
   },
   social: { facebook: "", instagram: "", youtube: "" },
-  backend: { googleAppsScriptUrl: "YOUR_APPS_SCRIPT_WEB_APP_URL", timeoutMs: 15000 }
+  backend: { googleAppsScriptUrl: "https://script.google.com/macros/s/AKfycbz748NGh51e1Cp1ZpdcejFJBPbbKmbt97tS3wcMCyEp2YRrVqm-gmHf9fOkyj0qsMIkaw/exec", timeoutMs: 15000 }
 };
 
 /* Only add services the client has verified. Placeholders are NOT real claims. */
