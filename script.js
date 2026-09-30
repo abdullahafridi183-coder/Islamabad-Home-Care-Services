@@ -29,7 +29,13 @@ const services = [
 
 /* Paste ONLY authentic Google reviews here: { name, rating, text, date } */
 const reviews = [
-  {name:"[Noor Khan90]",rating:"[★★★]",text: "[Very clean environment with trained staff. Service fast aur reliable hai.]"}
+  {name:"[Arish Khan]",rating:"[★★★★★]",text: "[Good experience overall. Staff was cooperative and arrived on time, just a little delay on the first day.]"},
+{name:"[Saif Ullah]",rating:"[★★★★★]",text: "[Good Service]"},
+{name:"[Fahad Hussain]",rating:"[★★★★★]",text: "[Very fast service and senior staff! Highly recommended.]"},
+{name:"[Tariq Ibrar]",rating:"[★★★★]",text: "[Best home care service, staff behavior is also good and work is also professional.]"},
+{name:"[Aqib Habib]",rating:"[★★★★★]",text: "[We had an excellent experience with Islamabad Homecare Services. Their staff is professional, polite, and highly responsible. They are always punctual and provide quality home medical care, including injections, drips, and other healthcare services with proper hygiene and care.Their rates are very reasonable, and the overall service quality is outstanding. We are completely satisfied with Islamabad Homecare Services and would highly recommend them to anyone looking for reliable and professional home healthcare services.]"},
+{name:"[Noor Khan90]",rating:"[★★★]",text: "[Very clean environment with trained staff. Service fast aur reliable hai.]"},
+  {name:"[See in Google Maps]",rating:"[★★★★★]",text: "[You can see more reviews on Google maps below.]"}
 
   
 ];
