@@ -1,361 +1,218 @@
-/* ==========================================================
-   ISLAMABAD HOME CARE SERVICES
-   Central client configuration — edit this object first.
-   ========================================================== */
+"use strict";
+/* ================= CONFIG: edit client values here ================= */
 const CONFIG = {
   business: {
     name: "Islamabad Home Care Services",
-    category: "Home Care / Healthcare / Patient Care Services",
-    phone: "+92 342 6881984",
-    phoneHref: "tel:+923426881984",
-    whatsapp: "923426881984",
-    whatsappMessage: "Hello Islamabad Home Care Services, I would like to know more about your services.",
-    appointmentWhatsappMessage: "Hello Islamabad Home Care Services, I would like to request an appointment.",
+    phone: "+923426881984", phoneDisplay: "+92 342 6881984", whatsapp: "923426881984",
     address: "Tower, Lower Ground, Shop No. 7, Aria Street 2, Markaz FECHS E-11/2, E-11, Islamabad, 44006, Pakistan",
-    hours: "10:00 AM – 10:00 PM",
-    rating: "4.9",
-    reviewCount: "22",
-    mapsUrl: "https://maps.app.goo.gl/Z2REQo4qYFWz86sc8",
-    mapEmbedUrl: "https://www.google.com/maps?q=Tower%2C%20Lower%20Ground%2C%20Shop%20No.%207%2C%20Aria%20Street%202%2C%20Markaz%20FECHS%20E-11%2F2%2C%20E-11%2C%20Islamabad%2C%2044006%2C%20Pakistan&output=embed"
+    hours: "10:00 AM – 10:00 PM", rating: "4.9", reviewCount: "22",
+    mapsUrl: "https://maps.app.goo.gl/Z2REQo4qYFWz86sc8"
+  },
+  messages: { // pre-filled WhatsApp texts
+    general: "Hello Islamabad Home Care Services, I would like to know more about your services.",
+    appointment: "Hello Islamabad Home Care Services, I would like to request an appointment.",
+    question: "Hello Islamabad Home Care Services, I have a question."
   },
   social: { facebook: "", instagram: "", youtube: "" },
-  backend: {
-    // Replace with your deployed Apps Script /exec URL.
-    googleAppsScriptUrl: "YOUR_APPS_SCRIPT_WEB_APP_URL"
-  },
-  media: {
-    images: [
-      "assets/images/image-01.svg",
-      "assets/images/image-02.svg",
-      "assets/images/image-03.svg",
-      "assets/images/image-04.svg"
-    ],
-    video: "assets/videos/video-01.mp4"
-  }
+  backend: { googleAppsScriptUrl: "YOUR_APPS_SCRIPT_WEB_APP_URL", timeoutMs: 15000 }
 };
 
-/* IMPORTANT:
-   These are deliberately NOT fake services. Replace these entries with
-   services confirmed by the business before publishing.
-*/
+/* Only add services the client has verified. Placeholders are NOT real claims. */
 const services = [
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED SERVICE DESCRIPTION]", icon: "✚", image: "assets/images/image-01.svg" },
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED SERVICE DESCRIPTION]", icon: "♥", image: "assets/images/image-02.svg" },
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED SERVICE DESCRIPTION]", icon: "◌", image: "assets/images/image-03.svg" }
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "✚", image: "assets/images/service-01.jpg" },
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "♡", image: "assets/images/service-02.jpg" },
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "⌂", image: "assets/images/service-03.jpg" }
 ];
 
-/* Paste authentic Google review data supplied/verified by the client here.
-   Do NOT publish invented review text or names.
-*/
+/* Paste ONLY authentic Google reviews here: { name, rating, text, date } */
 const reviews = [];
 
-/* ---------- Helpers ---------- */
-const $ = (selector, scope = document) => scope.querySelector(selector);
-const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+/* Client-authorized media. type: "image" | "video" */
+const gallery = [
+  { type: "image", src: "assets/images/image-01.jpg", alt: "Islamabad Home Care Services" },
+  { type: "image", src: "assets/images/image-02.jpg", alt: "Home care support" },
+  { type: "image", src: "assets/images/image-03.jpg", alt: "Our team" },
+  { type: "image", src: "assets/images/image-04.jpg", alt: "Our clinic location" },
+  { type: "video", src: "assets/videos/video-01.mp4", alt: "Video" }
+];
 
-function escapeHtml(value = "") {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-  }[char]));
-}
+const why = [
+  ["✚", "Professional Care", "[ADD VERIFIED DETAIL]"],
+  ["☎", "Convenient Communication", "Reach us by phone or WhatsApp every day."],
+  ["♡", "Patient-Focused Support", "[ADD VERIFIED DETAIL]"],
+  ["⌖", "Accessible Location", "Find us in Markaz FECHS E-11/2, Islamabad."]
+];
 
-function whatsappUrl(message = CONFIG.business.whatsappMessage) {
-  return `https://wa.me/${CONFIG.business.whatsapp}?text=${encodeURIComponent(message)}`;
-}
+/* ================= helpers ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const B = CONFIG.business;
+const waLink = key => `https://wa.me/${B.whatsapp}?text=${encodeURIComponent(CONFIG.messages[key] || CONFIG.messages.general)}`;
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function setBusinessData() {
-  $$("[data-rating]").forEach(el => el.textContent = CONFIG.business.rating);
-  $$("[data-review-count]").forEach(el => el.textContent = CONFIG.business.reviewCount);
-  $$("[data-address]").forEach(el => el.textContent = CONFIG.business.address);
-  $$("[data-phone]").forEach(el => {
-    el.href = CONFIG.business.phoneHref;
-    el.setAttribute("aria-label", `Call ${CONFIG.business.name}`);
+function applyConfig() {
+  const vals = { ...B, hoursDaily: `${B.hours.replace(/:00/g, "")} Daily` };
+  $$("[data-cfg]").forEach(n => { n.textContent = vals[n.dataset.cfg] ?? ""; });
+  $$("[data-tel]").forEach(a => a.href = `tel:${B.phone}`);
+  $$("[data-maps]").forEach(a => a.href = B.mapsUrl);
+  $$("[data-wa]").forEach(a => a.href = waLink(a.dataset.wa));
+  $("#map").src = `https://www.google.com/maps?q=${encodeURIComponent(B.name + " " + B.address)}&output=embed`;
+  $$("[data-media]").forEach(n => {
+    const img = new Image(); img.onload = () => { n.style.backgroundImage = `url(${n.dataset.media})`; }; img.src = n.dataset.media;
   });
-  $$("[data-whatsapp]").forEach(el => {
-    el.href = whatsappUrl();
-    el.setAttribute("aria-label", `WhatsApp ${CONFIG.business.name}`);
-  });
-  $$("[data-maps]").forEach(el => el.href = CONFIG.business.mapsUrl);
-  const mapFrame = $("#mapFrame");
-  if (mapFrame) mapFrame.src = CONFIG.business.mapEmbedUrl;
-  document.title = `${CONFIG.business.name} | Home Care & Patient Support in Islamabad`;
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": CONFIG.business.name,
-    "description": "Home care and patient care service business in Islamabad.",
-    "telephone": CONFIG.business.phone,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Tower, Lower Ground, Shop No. 7, Aria Street 2, Markaz FECHS E-11/2, E-11",
-      "addressLocality": "Islamabad",
-      "postalCode": "44006",
-      "addressCountry": "PK"
-    },
-    "openingHours": "Mo-Su 10:00-22:00",
-    "url": "https://YOUR-DOMAIN.example/",
-    "sameAs": [CONFIG.business.mapsUrl]
-  };
-  $("#businessSchema").textContent = JSON.stringify(schema);
+  const soc = Object.entries(CONFIG.social).filter(([, u]) => u);
+  $("#social").innerHTML = soc.map(([k, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${k}</a>`).join(" ");
 }
 
+/* ================= render ================= */
 function renderServices() {
-  const grid = $("#serviceGrid");
-  const select = $("#appointmentService");
-  if (!grid || !select) return;
-
-  grid.innerHTML = services.map((service, index) => `
-    <article class="service-card reveal ${index ? `delay-${Math.min(index,4)}` : ""}">
-      <div class="service-image"><img src="${escapeHtml(service.image)}" alt="" loading="lazy"></div>
-      <div class="service-body">
-        <div class="service-icon" aria-hidden="true">${escapeHtml(service.icon)}</div>
-        <h3>${escapeHtml(service.title)}</h3>
-        <p>${escapeHtml(service.description)}</p>
-        <a href="${whatsappUrl(CONFIG.business.appointmentWhatsappMessage)}" target="_blank" rel="noopener">Request via WhatsApp ↗</a>
-      </div>
-    </article>
-  `).join("");
-
-  select.innerHTML = `<option value="" selected disabled>Select a verified service</option>` +
-    services.map(service => `<option value="${escapeHtml(service.title)}">${escapeHtml(service.title)}</option>`).join("");
-  observeReveals();
+  const grid = $("#services-grid"), sel = $("#service-select");
+  services.forEach(s => {
+    const c = el("article", "card reveal");
+    c.innerHTML = `<div class="img"><img src="${esc(s.image)}" alt="${esc(s.title)}" loading="lazy" width="640" height="400"></div>
+      <div class="body"><span class="ic" aria-hidden="true">${s.icon}</span><h3>${esc(s.title)}</h3><p>${esc(s.description)}</p>
+      <div class="row"><a class="btn btn-ghost dk" href="#appointment" data-svc="${esc(s.title)}">Learn More</a>
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink("appointment")}">WhatsApp</a></div></div>`;
+    grid.append(c);
+    sel.append(new Option(s.title, s.title));
+  });
+  sel.append(new Option("Other / Not sure", "Other"));
+  grid.addEventListener("click", e => { const a = e.target.closest("[data-svc]"); if (a) sel.value = a.dataset.svc; });
+  $("#why-grid").innerHTML = why.map(w => `<div class="why reveal"><span class="ic" aria-hidden="true">${w[0]}</span><h3>${w[1]}</h3><p>${w[2]}</p></div>`).join("");
 }
 
-let currentReview = 0;
-let reviewTimer;
+function renderGallery() {
+  const g = $("#gallery-grid");
+  gallery.forEach((m, i) => {
+    const b = el("button", "tile" + (m.type === "video" ? " vid" : ""));
+    b.setAttribute("aria-label", "Open " + m.alt);
+    b.innerHTML = m.type === "video" ? `<video src="${m.src}" preload="metadata" muted playsinline></video>` : `<img src="${m.src}" alt="${esc(m.alt)}" loading="lazy">`;
+    b.addEventListener("click", () => openLightbox(i));
+    g.append(b);
+  });
+  $$("img", g).forEach(i => i.addEventListener("error", () => i.remove()));
+}
+let lbIndex = 0, lastFocus = null;
+function openLightbox(i) {
+  lbIndex = (i + gallery.length) % gallery.length; const m = gallery[lbIndex];
+  $("#lb-body").innerHTML = m.type === "video" ? `<video src="${m.src}" controls autoplay playsinline></video>` : `<img src="${m.src}" alt="${esc(m.alt)}">`;
+  lastFocus = document.activeElement; $("#lightbox").hidden = false; $("#lb-x").focus();
+}
+function closeModal(m) { m.hidden = true; $("#lb-body").innerHTML = ""; lastFocus && lastFocus.focus(); }
 
-function renderReviews() {
-  const track = $("#reviewTrack"), dots = $("#reviewDots");
-  if (!track || !dots) return;
-
+/* ================= reviews carousel ================= */
+function initCarousel() {
+  const track = $("#track"), dots = $("#dots"), box = $("#carousel");
   if (!reviews.length) {
-    track.innerHTML = `
-      <article class="review-card">
-        <div class="quote">“</div>
-        <p>Authentic Google reviews will appear here after the verified review text is added to the <code>reviews</code> array in <strong>script.js</strong>.</p>
-        <strong>Google Reviews</strong>
-        <small>View the official listing for the current review content.</small>
-      </article>`;
-    dots.innerHTML = "";
-    return;
+    track.innerHTML = `<div class="slide"><blockquote><p>Read what our patients say about us on Google.</p></blockquote></div>`;
+    $(".car-ctl").hidden = true; return;
   }
-
-  track.innerHTML = reviews.map(review => `
-    <article class="review-card">
-      <div class="quote">“</div>
-      <p>${escapeHtml(review.text)}</p>
-      <strong>${escapeHtml(review.name)}</strong>
-      <small>${"★".repeat(Math.max(0, Math.min(5, Number(review.rating || 5))))}${review.date ? ` · ${escapeHtml(review.date)}` : ""}</small>
-    </article>
-  `).join("");
-
-  dots.innerHTML = reviews.map((_, i) =>
-    `<button type="button" aria-label="Go to review ${i+1}" data-review-index="${i}" class="${i===0?"active":""}"></button>`
-  ).join("");
-
-  $$("#reviewDots button").forEach(btn => btn.addEventListener("click", () => goToReview(Number(btn.dataset.reviewIndex))));
-  startReviewAutoplay();
-}
-
-function goToReview(index) {
-  if (!reviews.length) return;
-  currentReview = (index + reviews.length) % reviews.length;
-  $("#reviewTrack").style.transform = `translateX(-${currentReview * 100}%)`;
-  $$("#reviewDots button").forEach((btn, i) => btn.classList.toggle("active", i === currentReview));
-}
-function startReviewAutoplay() {
-  clearInterval(reviewTimer);
-  if (reviews.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    reviewTimer = setInterval(() => goToReview(currentReview + 1), 6000);
-  }
-}
-
-/* ---------- Navigation ---------- */
-function initNavigation() {
-  const header = $("#siteHeader"), toggle = $("#menuToggle");
-  const updateHeader = () => {
-    header.classList.toggle("scrolled", window.scrollY > 30);
-    const max = document.documentElement.scrollHeight - innerHeight;
-    $("#scrollProgress").style.width = `${max > 0 ? (scrollY / max) * 100 : 0}%`;
+  let cur = 0, timer;
+  reviews.forEach((r, i) => {
+    track.append(el("div", "slide", `<blockquote><span class="stars" aria-label="${r.rating} out of 5 stars">${"★".repeat(r.rating)}</span><p>${esc(r.text)}</p>
+      <footer>${esc(r.name)} ${r.date ? `<small>· ${esc(r.date)}</small>` : ""}</footer></blockquote>`));
+    const d = el("button"); d.setAttribute("aria-label", `Review ${i + 1}`); d.onclick = () => go(i); dots.append(d);
+  });
+  const go = i => {
+    cur = (i + reviews.length) % reviews.length; track.style.transform = `translateX(-${cur * 100}%)`;
+    $$("button", dots).forEach((d, k) => d.setAttribute("aria-current", k === cur));
   };
-  window.addEventListener("scroll", updateHeader, { passive: true });
-  updateHeader();
+  const play = () => { if (!reduced) timer = setInterval(() => go(cur + 1), 6000); }, stop = () => clearInterval(timer);
+  $("#prev").onclick = () => go(cur - 1); $("#next").onclick = () => go(cur + 1);
+  box.addEventListener("mouseenter", stop); box.addEventListener("mouseleave", play); box.addEventListener("focusin", stop);
+  box.addEventListener("keydown", e => { if (e.key === "ArrowLeft") go(cur - 1); if (e.key === "ArrowRight") go(cur + 1); });
+  let x0 = null; track.addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
+  track.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+  go(0); play();
+}
 
-  toggle.addEventListener("click", () => {
-    const open = document.body.classList.toggle("menu-open");
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+/* ================= forms ================= */
+const phoneOk = v => /^\+?[0-9\s\-]{10,15}$/.test(v.trim());
+function validate(form) {
+  let ok = true;
+  $$("input,select,textarea", form).forEach(f => {
+    const err = f.parentElement.querySelector(".err"); if (!err) return;
+    let msg = "";
+    const v = f.value.trim();
+    if (f.required && !v) msg = "This field is required.";
+    else if (v && f.type === "tel" && !phoneOk(v)) msg = "Enter a valid phone number.";
+    else if (v && f.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = "Enter a valid email address.";
+    err.textContent = msg; f.setAttribute("aria-invalid", !!msg); if (msg) ok = false;
   });
-
-  $$("#primaryNav a").forEach(link => link.addEventListener("click", () => {
-    document.body.classList.remove("menu-open");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Open menu");
-  }));
-
-  $("#backTop").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  if (!ok) $("[aria-invalid=true]", form)?.focus();
+  return ok;
 }
-
-/* ---------- Reveal animation ---------- */
-let revealObserver;
-function observeReveals() {
-  if (!revealObserver) {
-    revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-  }
-  $$(".reveal:not(.visible)").forEach(el => revealObserver.observe(el));
-}
-
-/* ---------- Forms / Google Apps Script ---------- */
-function formToObject(form) {
-  const data = {};
-  new FormData(form).forEach((value, key) => { data[key] = String(value).trim(); });
-  return data;
-}
-
-function validateForm(form) {
-  let valid = true;
-  $$("[required]", form).forEach(field => {
-    const ok = field.value.trim() !== "";
-    field.setAttribute("aria-invalid", String(!ok));
-    field.style.borderColor = ok ? "" : "#c44b43";
-    if (!ok) valid = false;
-  });
-  const email = $('input[type="email"]', form);
-  if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-    email.setAttribute("aria-invalid", "true");
-    email.style.borderColor = "#c44b43";
-    valid = false;
-  }
-  return valid;
-}
-
 async function submitForm(form) {
-  const status = $(".form-status", form);
-  const button = $(".form-submit", form) || $("button[type='submit']", form);
-  if (!validateForm(form)) {
-    status.textContent = "Please complete the required fields.";
-    status.className = "form-status error";
-    return;
-  }
-
-  if (!CONFIG.backend.googleAppsScriptUrl || CONFIG.backend.googleAppsScriptUrl.includes("YOUR_APPS_SCRIPT")) {
-    status.textContent = "The form backend is not configured yet. Please contact us directly on WhatsApp.";
-    status.className = "form-status error";
-    return;
-  }
-
-  button.disabled = true;
-  button.classList.add("is-loading");
-  status.textContent = "Sending securely…";
-  status.className = "form-status";
-
-  const payload = formToObject(form);
-  payload.formType = form.dataset.formType || "Contact";
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15000);
-
+  const msgBox = $(".form-err", form), btn = $("button[type=submit]", form), label = btn.textContent;
+  msgBox.hidden = true;
+  if (!validate(form)) return;
+  const data = Object.fromEntries(new FormData(form)); data.formType = form.dataset.type;
+  if (data.website) return; // honeypot
+  if (CONFIG.backend.googleAppsScriptUrl.startsWith("YOUR_")) return fail("Something went wrong while sending your request.");
+  btn.disabled = true; btn.textContent = "Sending…";
+  const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), CONFIG.backend.timeoutMs);
   try {
-    const response = await fetch(CONFIG.backend.googleAppsScriptUrl, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload),
-      signal: controller.signal
-    });
-    clearTimeout(timeout);
-
-    const raw = await response.text();
-    let result;
-    try { result = JSON.parse(raw); } catch { result = { success: false }; }
-
-    if (!response.ok || !result.success) throw new Error("Submission failed");
-
-    status.textContent = "Submitted successfully.";
-    status.className = "form-status success";
-    form.reset();
-
-    if (payload.formType === "Appointment") openModal("successModal");
-  } catch (error) {
-    clearTimeout(timeout);
-    status.textContent = "Something went wrong while sending your request. Please try again or contact us directly on WhatsApp.";
-    status.className = "form-status error";
-  } finally {
-    button.disabled = false;
-    button.classList.remove("is-loading");
+    // text/plain avoids a CORS preflight, which Apps Script does not support
+    const res = await fetch(CONFIG.backend.googleAppsScriptUrl, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data), signal: ctrl.signal });
+    const json = await res.json();
+    if (!json.success) throw new Error("backend");
+    form.reset(); lastFocus = document.activeElement;
+    const m = $("#modal"); $("#m-title").textContent = form.dataset.type === "appointment" ? "Appointment Request Received" : "Message Received";
+    m.hidden = false; $("#m-close").focus();
+  } catch (e) { fail("Something went wrong while sending your request."); }
+  finally { clearTimeout(t); btn.disabled = false; btn.textContent = label; }
+  function fail(text) {
+    msgBox.innerHTML = `${text} Please try again or <a href="${waLink("appointment")}" target="_blank" rel="noopener">contact us directly on WhatsApp</a>.`; msgBox.hidden = false;
   }
 }
 
-function initForms() {
-  $$("[data-form]").forEach(form => form.addEventListener("submit", event => {
-    event.preventDefault();
-    submitForm(form);
+/* ================= scroll & UI ================= */
+function initScroll() {
+  const nav = $("#nav"), bar = $("#progress"), top = $("#totop"), steps = $("#steps");
+  const links = $$(".menu a"), secs = links.map(a => $(a.getAttribute("href")));
+  const onScroll = () => {
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    nav.classList.toggle("scrolled", y > 40); bar.style.width = (y / h * 100) + "%"; top.classList.toggle("show", y > 600);
+    const r = steps.getBoundingClientRect(); steps.style.setProperty("--line", Math.min(1, Math.max(0, (innerHeight * .8 - r.top) / r.height)));
+    if (!reduced) $(".hero-media").style.transform = `translateY(${y * .15}px) scale(1.05)`;
+    let idx = 0; secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 120) idx = i; });
+    links.forEach((a, i) => a.classList.toggle("active", i === idx));
+  };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  top.onclick = () => scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+  $$(".reveal").forEach(n => io.observe(n));
+  const co = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; co.unobserve(e.target);
+    const end = +e.target.textContent, t0 = performance.now();
+    const step = t => { const p = Math.min(1, (t - t0) / 1200); e.target.textContent = Math.round(end * p); if (p < 1) requestAnimationFrame(step); };
+    reduced ? 0 : requestAnimationFrame(step);
   }));
+  $$("[data-count]").forEach(n => co.observe(n));
+}
+function initMenu() {
+  const b = $("#burger"), m = $("#menu");
+  const set = o => { m.classList.toggle("open", o); b.setAttribute("aria-expanded", o); document.body.style.overflow = o ? "hidden" : ""; };
+  b.onclick = () => set(!m.classList.contains("open"));
+  $$("a", m).forEach(a => a.addEventListener("click", () => set(false)));
+  addEventListener("keydown", e => { if (e.key === "Escape") { set(false); [$("#modal"), $("#lightbox")].forEach(x => !x.hidden && closeModal(x)); } if (!$("#lightbox").hidden) { if (e.key === "ArrowRight") openLightbox(lbIndex + 1); if (e.key === "ArrowLeft") openLightbox(lbIndex - 1); } });
+}
+function initVideo() {
+  const v = $("#promo"), o = $("#video-over");
+  $("#play").onclick = () => { o.classList.add("off"); v.play(); };
+  v.addEventListener("pause", () => { if (v.ended) o.classList.remove("off"); });
 }
 
-/* ---------- Modals / gallery / video ---------- */
-function openModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) { modal.hidden = false; document.body.classList.add("modal-open"); }
-}
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) modal.hidden = true;
-  if (!$$(".modal:not([hidden])").length) document.body.classList.remove("modal-open");
-}
-function initMedia() {
-  $$(".gallery-item[data-lightbox]").forEach(item => item.addEventListener("click", () => {
-    $("#lightboxImage").src = item.dataset.lightbox;
-    $("#lightboxImage").alt = item.querySelector("img")?.alt || "Business image";
-    $("#lightboxCaption").textContent = item.dataset.caption || "";
-    openModal("lightboxModal");
-  }));
-  $$("[data-close-lightbox]").forEach(el => el.addEventListener("click", () => closeModal("lightboxModal")));
-
-  $("#videoOpen").addEventListener("click", () => openModal("videoModal"));
-  $$("[data-close-video]").forEach(el => el.addEventListener("click", () => {
-    $("#businessVideo").pause();
-    closeModal("videoModal");
-  }));
-
-  $$("[data-close-modal]").forEach(el => el.addEventListener("click", () => closeModal("successModal")));
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") $$(".modal:not([hidden])").forEach(m => closeModal(m.id));
-  });
-}
-
-/* ---------- Review controls + swipe ---------- */
-function initReviewControls() {
-  $("#reviewPrev").addEventListener("click", () => { goToReview(currentReview - 1); startReviewAutoplay(); });
-  $("#reviewNext").addEventListener("click", () => { goToReview(currentReview + 1); startReviewAutoplay(); });
-
-  const windowEl = $(".review-window");
-  let startX = 0;
-  windowEl.addEventListener("touchstart", e => { startX = e.changedTouches[0].screenX; }, { passive: true });
-  windowEl.addEventListener("touchend", e => {
-    const delta = e.changedTouches[0].screenX - startX;
-    if (Math.abs(delta) > 45) goToReview(currentReview + (delta < 0 ? 1 : -1));
-  }, { passive: true });
-  windowEl.addEventListener("mouseenter", () => clearInterval(reviewTimer));
-  windowEl.addEventListener("mouseleave", startReviewAutoplay);
-}
-
-/* ---------- Startup ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  setBusinessData();
-  renderServices();
-  renderReviews();
-  initNavigation();
-  initForms();
-  initMedia();
-  initReviewControls();
-  observeReveals();
+  applyConfig(); renderServices(); renderGallery(); initCarousel(); initScroll(); initMenu(); initVideo();
+  $$("form[data-type]").forEach(f => {
+    f.addEventListener("submit", e => { e.preventDefault(); submitForm(f); });
+    f.addEventListener("input", e => { if (e.target.getAttribute("aria-invalid") === "true") validate(f); });
+  });
+  const d = $("input[name=date]"); if (d) d.min = new Date().toISOString().slice(0, 10);
+  $("#m-close").onclick = () => closeModal($("#modal")); $("#lb-x").onclick = () => closeModal($("#lightbox"));
+  [$("#modal"), $("#lightbox")].forEach(m => m.addEventListener("click", e => { if (e.target === m) closeModal(m); }));
+  $$("img").forEach(i => i.addEventListener("error", () => { i.style.visibility = "hidden"; }));
 });
