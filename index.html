@@ -151,6 +151,25 @@
       <div class="car-ctl"><button id="prev" aria-label="Previous review">‹</button><div id="dots"></div><button id="next" aria-label="Next review">›</button></div>
     </div>
     <p class="center"><a class="btn btn-main" data-maps target="_blank" rel="noopener">See all reviews on Google</a></p>
+    <div class="narrow fb">
+      <h3>Share your feedback</h3>
+      <p class="sub">Your feedback is sent privately to our team.</p>
+      <form class="form" id="fb-form" novalidate data-type="feedback">
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label>Your Name *<input name="fullName" required autocomplete="name"><em class="err"></em></label>
+        <label>Phone<input name="phone" type="tel" inputmode="tel"><em class="err"></em></label>
+        <fieldset class="stars-in" id="rating-set"><legend>Your Rating *</legend>
+          <input type="radio" name="rating" id="r5" value="5"><label for="r5" title="5 stars">★</label>
+          <input type="radio" name="rating" id="r4" value="4"><label for="r4" title="4 stars">★</label>
+          <input type="radio" name="rating" id="r3" value="3"><label for="r3" title="3 stars">★</label>
+          <input type="radio" name="rating" id="r2" value="2"><label for="r2" title="2 stars">★</label>
+          <input type="radio" name="rating" id="r1" value="1"><label for="r1" title="1 star">★</label>
+        </fieldset><em class="err" id="rating-err"></em>
+        <label>Your Review *<textarea name="message" rows="4" required></textarea><em class="err"></em></label>
+        <button class="btn btn-main" type="submit">Send Feedback</button>
+        <p class="form-err" role="alert" hidden></p>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -214,7 +233,7 @@
 <div class="mbar"><a data-tel>Call</a><a data-wa="general" target="_blank" rel="noopener">WhatsApp</a><a href="#appointment">Appointment</a></div>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" hidden>
-  <div class="modal-box glass"><h3 id="m-title">Appointment Request Received</h3><p>Thank you. Our team will contact you shortly to confirm your request.</p><button class="btn btn-main" id="m-close">Close</button></div>
+  <div class="modal-box glass"><h3 id="m-title">Appointment Request Received</h3><p id="m-text">Thank you. Our team will contact you shortly to confirm your request.</p><button class="btn btn-main" id="m-close">Close</button></div>
 </div>
 <div class="modal" id="lightbox" role="dialog" aria-modal="true" aria-label="Media preview" hidden>
   <button class="lb-x" id="lb-x" aria-label="Close preview">×</button><div id="lb-body"></div>

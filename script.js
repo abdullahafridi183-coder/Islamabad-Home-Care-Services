@@ -141,6 +141,8 @@ function validate(form) {
     else if (v && f.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = "Enter a valid email address.";
     err.textContent = msg; f.setAttribute("aria-invalid", !!msg); if (msg) ok = false;
   });
+  const rs = $("#rating-set", form);
+  if (rs) { const bad = !$("input:checked", rs); $("#rating-err").textContent = bad ? "Please choose a star rating." : ""; if (bad) ok = false; }
   if (!ok) $("[aria-invalid=true]", form)?.focus();
   return ok;
 }
@@ -160,6 +162,7 @@ async function submitForm(form) {
     if (!json.success) throw new Error("backend");
     form.reset(); lastFocus = document.activeElement;
     const m = $("#modal"); $("#m-title").textContent = form.dataset.type === "appointment" ? "Appointment Request Received" : "Message Received";
+    const fbk = form.dataset.type === "feedback"; if (fbk) { $("#m-title").textContent = "Thank You for Your Feedback"; $("#m-text").textContent = "Your feedback has been sent to our team."; } else { $("#m-text").textContent = "Thank you. Our team will contact you shortly to confirm your request."; }
     m.hidden = false; $("#m-close").focus();
   } catch (e) { fail("Something went wrong while sending your request."); }
   finally { clearTimeout(t); btn.disabled = false; btn.textContent = label; }
