@@ -1,35 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#073b70">
-  <meta name="description" content="Islamabad Home Care Services Pvt. Ltd. — professional home healthcare and patient support in Islamabad. Request an appointment or connect on WhatsApp.">
-  <meta property="og:title" content="Islamabad Home Care Services | IHCS">
-  <meta property="og:description" content="Professional healthcare at your doorstep.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071b2b">
+  <meta name="description" content="Islamabad Home Care Services | Home Care & Patient Support in Islamabad. Contact, appointment requests, WhatsApp and location information.">
+  <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
-  <title>Islamabad Home Care Services | IHCS</title>
+  <meta property="og:title" content="Islamabad Home Care Services | Home Care & Patient Support in Islamabad">
+  <meta property="og:description" content="Professional home-care support information, appointment requests, WhatsApp and location access for Islamabad Home Care Services.">
+  <meta property="og:image" content="assets/images/image-01.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Islamabad Home Care Services">
+  <meta name="twitter:description" content="Home care and patient support in Islamabad.">
+  <link rel="canonical" href="https://YOUR-DOMAIN.example/">
+  <title>Islamabad Home Care Services | Home Care & Patient Support in Islamabad</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
   <header class="site-header" id="siteHeader">
-    <nav class="nav container" aria-label="Main navigation">
+    <nav class="navbar container" aria-label="Primary navigation">
       <a class="brand" href="#home" aria-label="Islamabad Home Care Services home">
-        <span class="brand-mark">IHCS</span>
-        <span class="brand-text">
-          <strong>ISLAMABAD HOME CARE</strong>
-          <small>SERVICES PVT. LTD.</small>
-        </span>
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+        <span class="brand-text"><strong>Islamabad</strong><small>Home Care Services</small></span>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
-      <div class="nav-links" id="navLinks">
+
+      <div class="nav-panel" id="primaryNav">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -43,76 +49,69 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-bg">
-        <img src="assets/images/ihcs-promo-01.jpg" alt="Islamabad Home Care Services healthcare team and services">
+  <main id="main">
+    <section class="hero section-dark" id="home">
+      <div class="hero-media">
+        <img src="assets/images/image-01.svg" alt="Authorized healthcare image for Islamabad Home Care Services" loading="eager">
+        <div class="hero-overlay"></div>
       </div>
-      <div class="hero-overlay"></div>
-      <div class="hero-orb orb-one"></div>
-      <div class="hero-orb orb-two"></div>
+      <div class="hero-orb orb-one" aria-hidden="true"></div>
+      <div class="hero-orb orb-two" aria-hidden="true"></div>
+
       <div class="container hero-content">
         <div class="hero-copy reveal">
-          <span class="eyebrow">COMPASSIONATE CARE <i></i> PROFESSIONAL SERVICE</span>
-          <h1>Professional healthcare, <em>at your doorstep.</em></h1>
-          <p>Supportive home-care services designed around comfort, communication and convenient access to care in Islamabad.</p>
+          <p class="eyebrow"><span></span> Compassionate Care • Professional Service</p>
+          <h1>Trusted Care, <em>When You Need It Most.</em></h1>
+          <p class="hero-lead">A calm, convenient way to connect with Islamabad Home Care Services, ask about available support, and request an appointment for your needs.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#appointment">Book an Appointment <span>↗</span></a>
-            <a class="btn btn-glass" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp Us</a>
-          </div>
-          <div class="hero-trust">
-            <span><b>4.9</b>/5 Google rating</span>
-            <span class="dot"></span>
-            <span>22 Google reviews</span>
-            <span class="dot"></span>
-            <span>10 AM–10 PM daily</span>
+            <a class="btn btn-glass" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp Us <span>↗</span></a>
+            <a class="text-link light" data-phone href="#"><span>Call Now</span> <b>+92 342 6881984</b></a>
           </div>
         </div>
 
         <div class="hero-card reveal delay-2">
-          <div class="hero-card-top">
-            <span class="status-dot"></span>
-            <span>CARE AT HOME</span>
-            <span class="card-rating">★ 4.9</span>
-          </div>
-          <h3>Care that feels closer to home.</h3>
-          <p>Request the service you need and let the team contact you to discuss your preferred time and location.</p>
-          <a href="#appointment" class="card-link">Request care <span>→</span></a>
+          <div class="rating-stars" aria-label="4.9 out of 5 stars">★★★★★</div>
+          <strong><span data-rating>4.9</span><small>/5</small></strong>
+          <span>Google rating · <span data-review-count>22</span> reviews</span>
+          <a data-maps href="#" target="_blank" rel="noopener">View on Google Maps ↗</a>
         </div>
       </div>
-      <a class="scroll-cue" href="#about"><span></span>Scroll to explore</a>
+
+      <a class="scroll-cue" href="#trust" aria-label="Scroll to learn more"><span></span> Explore</a>
     </section>
 
-    <section class="trust-strip">
+    <section class="trust-strip" id="trust">
       <div class="container trust-grid">
-        <div class="trust-item"><strong>4.9/5</strong><span>Google rating</span></div>
-        <div class="trust-item"><strong>22</strong><span>Google reviews</span></div>
-        <div class="trust-item"><strong>10 AM–10 PM</strong><span>Open daily</span></div>
-        <div class="trust-item"><strong>Islamabad</strong><span>Home-care support</span></div>
+        <div class="trust-item reveal"><span class="trust-icon">★</span><div><strong><span data-rating>4.9</span>/5</strong><small>Google Rating</small></div></div>
+        <div class="trust-item reveal delay-1"><span class="trust-icon">✦</span><div><strong><span data-review-count>22</span>+</strong><small>Google Reviews</small></div></div>
+        <div class="trust-item reveal delay-2"><span class="trust-icon">◷</span><div><strong>10 AM – 10 PM</strong><small>Monday – Sunday</small></div></div>
+        <div class="trust-item reveal delay-3"><span class="trust-icon">⌖</span><div><strong>Islamabad</strong><small>E-11 / FECHS</small></div></div>
+        <div class="trust-item reveal delay-4"><span class="trust-icon">◌</span><div><strong>Call / WhatsApp</strong><small>Easy contact</small></div></div>
       </div>
     </section>
 
-    <section class="section about-section" id="about">
-      <div class="container split">
-        <div class="visual-stack reveal">
-          <div class="image-frame large"><img src="assets/images/ihcs-promo-02.jpg" alt="IHCS nurse caring for an elderly patient"></div>
-          <div class="floating-note">
-            <span class="note-icon">⌂</span>
-            <div><strong>At your doorstep</strong><small>Home healthcare focus</small></div>
+    <section class="section section-soft" id="about">
+      <div class="container split about-grid">
+        <div class="about-visual reveal">
+          <div class="image-frame large">
+            <img src="assets/images/image-02.svg" alt="Authorized image for Islamabad Home Care Services" loading="lazy">
           </div>
-          <div class="corner-shape"></div>
+          <div class="floating-note">
+            <span class="mini-icon">♥</span>
+            <div><strong>Care with compassion</strong><small>Information & appointment access</small></div>
+          </div>
+          <div class="vertical-label">ISLAMABAD · E-11</div>
         </div>
         <div class="section-copy reveal delay-1">
-          <span class="eyebrow dark">ABOUT IHCS</span>
-          <h2>Care that comes with <span>compassion.</span></h2>
-          <p>Islamabad Home Care Services Pvt. Ltd. presents a home-focused healthcare experience for people and families seeking convenient access to care.</p>
-          <p>From nursing and patient support to the services shown in the business's official promotional materials, the website makes it simple to understand available options, request an appointment and connect directly with the team.</p>
-          <div class="info-list">
-            <div><span>01</span><b>Home-focused support</b></div>
-            <div><span>02</span><b>Convenient appointment requests</b></div>
-            <div><span>03</span><b>Direct call & WhatsApp access</b></div>
+          <p class="eyebrow"><span></span> About the business</p>
+          <h2>Care That Comes With <em>Compassion.</em></h2>
+          <p>Islamabad Home Care Services is a home-care and patient-care service based in Islamabad. This website makes it simple for visitors and families to find the business, contact the team, request an appointment, and access the official Google Maps listing.</p>
+          <div class="address-card">
+            <span class="line-icon">⌖</span>
+            <div><small>Business location</small><strong data-address></strong></div>
           </div>
-          <a class="text-link" data-maps href="#" target="_blank" rel="noopener">Get directions on Google Maps <span>↗</span></a>
+          <a class="btn btn-dark" data-maps href="#" target="_blank" rel="noopener">Get Directions <span>↗</span></a>
         </div>
       </div>
     </section>
@@ -120,211 +119,236 @@
     <section class="section services-section" id="services">
       <div class="container">
         <div class="section-heading centered reveal">
-          <span class="eyebrow dark">WHAT WE OFFER</span>
-          <h2>Services built around <span>your needs.</span></h2>
-          <p>These services are based on the services displayed in the client-provided IHCS promotional materials.</p>
+          <p class="eyebrow"><span></span> Services</p>
+          <h2>Explore Available <em>Care Support.</em></h2>
+          <p>Only verified services should be published here. The cards below are intentionally editable until the business supplies or confirms its service list.</p>
         </div>
-        <div class="services-grid" id="servicesGrid"></div>
-      </div>
-    </section>
-
-    <section class="section why-section" id="why-us">
-      <div class="container why-wrap">
-        <div class="why-copy reveal">
-          <span class="eyebrow dark">THE IHCS EXPERIENCE</span>
-          <h2>A calmer way to <span>arrange care.</span></h2>
-          <p>Good healthcare access starts with a clear conversation. IHCS makes the first step simple: choose a service, share your preferred time and location, and connect with the team.</p>
-          <div class="feature-grid">
-            <article><span>01</span><h3>Comfort of home</h3><p>Home-focused care can make arranging support more convenient for families.</p></article>
-            <article><span>02</span><h3>Easy communication</h3><p>Call or WhatsApp directly, or send a structured appointment request.</p></article>
-            <article><span>03</span><h3>Clear requests</h3><p>Choose a service and provide the details needed for follow-up.</p></article>
-            <article><span>04</span><h3>Local access</h3><p>Business location and directions are available directly from the website.</p></article>
-          </div>
-        </div>
-        <div class="why-visual reveal delay-1">
-          <img src="assets/images/ihcs-promo-01.jpg" alt="IHCS professional healthcare team">
-          <div class="visual-caption"><strong>Professional care at your doorstep</strong><span>Islamabad Home Care Services</span></div>
+        <div class="service-grid" id="serviceGrid"></div>
+        <div class="notice-card reveal">
+          <span>i</span>
+          <p><strong>Service verification note:</strong> This website does not publish unverified medical services. Replace the editable service entries in <code>script.js</code> with the business's confirmed services before launch.</p>
         </div>
       </div>
     </section>
 
-    <section class="process-section">
+    <section class="section why-section section-dark" id="why-us">
       <div class="container">
-        <div class="section-heading centered light reveal">
-          <span class="eyebrow">HOW IT WORKS</span>
-          <h2>From request to <em>conversation.</em></h2>
+        <div class="section-heading centered reveal">
+          <p class="eyebrow"><span></span> Why connect with us</p>
+          <h2>A More <em>Accessible</em> Care Experience.</h2>
+          <p>These points describe the website experience and verified business information without adding unsupported medical or credential claims.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-card reveal"><span>01</span><div class="why-icon">☎</div><h3>Direct Communication</h3><p>Call or start a WhatsApp conversation directly from the website.</p></article>
+          <article class="why-card reveal delay-1"><span>02</span><div class="why-icon">⌖</div><h3>Easy Location Access</h3><p>Open the official Google Maps listing for directions and business details.</p></article>
+          <article class="why-card reveal delay-2"><span>03</span><div class="why-icon">◷</div><h3>Clear Availability</h3><p>Opening hours are presented clearly so visitors know when to contact the business.</p></article>
+          <article class="why-card reveal delay-3"><span>04</span><div class="why-icon">✓</div><h3>Request, Then Confirm</h3><p>Appointment requests are submitted for follow-up; a form submission is not treated as a confirmed appointment.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow"><span></span> How it works</p>
+          <h2>A Simple Path to <em>Getting Started.</em></h2>
         </div>
         <div class="process-grid">
-          <article class="process-card reveal"><span>01</span><h3>Choose a service</h3><p>Select the type of support you want to request.</p></article>
-          <article class="process-card reveal delay-1"><span>02</span><h3>Share your details</h3><p>Tell us your contact details, preferred date, time and area.</p></article>
-          <article class="process-card reveal delay-2"><span>03</span><h3>Discuss your request</h3><p>The team can contact you to discuss and confirm the request.</p></article>
-          <article class="process-card reveal delay-3"><span>04</span><h3>Arrange the next step</h3><p>Move forward after your request has been reviewed and discussed.</p></article>
+          <article class="process-step reveal"><span>01</span><div class="process-icon">☎</div><h3>Contact Us</h3><p>Call or message the business with your initial question.</p></article>
+          <article class="process-step reveal delay-1"><span>02</span><div class="process-icon">✎</div><h3>Tell Us What You Need</h3><p>Share the service and information relevant to your request.</p></article>
+          <article class="process-step reveal delay-2"><span>03</span><div class="process-icon">◷</div><h3>Discuss Your Appointment</h3><p>Submit your preferred date and time for the team to review.</p></article>
+          <article class="process-step reveal delay-3"><span>04</span><div class="process-icon">♥</div><h3>Receive Follow-Up</h3><p>The business can contact you to discuss and confirm the request.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section appointment-section" id="appointment">
-      <div class="container appointment-wrap">
-        <div class="appointment-copy reveal">
-          <span class="eyebrow dark">APPOINTMENT REQUEST</span>
-          <h2>Let's arrange the <span>next step.</span></h2>
-          <p>Send your request through the form. Submission does not itself confirm an appointment; the team can contact you to discuss and confirm availability.</p>
-          <div class="appointment-contact">
-            <a data-phone href="#"><span>☎</span><div><small>Call</small><strong>+92 342 6881984</strong></div></a>
-            <a data-whatsapp href="#" target="_blank" rel="noopener"><span>◌</span><div><small>WhatsApp</small><strong>Chat directly</strong></div></a>
+    <section class="section appointment-section section-soft" id="appointment">
+      <div class="container appointment-shell">
+        <div class="appointment-intro reveal">
+          <p class="eyebrow"><span></span> Appointment request</p>
+          <h2>Let’s Start With <em>Your Request.</em></h2>
+          <p>Complete the form and the information will be sent to the configured Google Sheets backend for appointment/request handling.</p>
+          <div class="side-contact">
+            <a data-phone href="#"><span>Call</span><strong>+92 342 6881984</strong></a>
+            <a data-whatsapp href="#" target="_blank" rel="noopener"><span>WhatsApp</span><strong>Start a conversation ↗</strong></a>
           </div>
         </div>
-
-        <form class="appointment-form form-card reveal delay-1" id="appointmentForm" novalidate>
-          <div class="form-head"><span>REQUEST FORM</span><strong>Tell us what you need</strong></div>
+        <form class="form-card reveal delay-1" data-form data-form-type="Appointment" novalidate>
+          <div class="form-heading"><span>01</span><div><strong>Request an appointment</strong><small>Required fields are marked *</small></div></div>
           <div class="form-grid">
-            <label>Full name<input name="fullName" required autocomplete="name" placeholder="Your full name"></label>
-            <label>Phone number<input name="phone" required type="tel" autocomplete="tel" placeholder="+92 ..."></label>
-            <label>WhatsApp number<input name="whatsapp" type="tel" placeholder="+92 ..."></label>
+            <label>Full Name *<input name="fullName" autocomplete="name" required placeholder="Your full name"></label>
+            <label>Phone Number *<input name="phone" type="tel" autocomplete="tel" required placeholder="+92 ..."></label>
+            <label>WhatsApp Number<input name="whatsapp" type="tel" placeholder="+92 ..."></label>
             <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
-            <label class="full">Service<select name="service" id="appointmentService" required><option value="">Select a service</option></select></label>
-            <label>Preferred date<input name="preferredDate" required type="date"></label>
-            <label>Preferred time<input name="preferredTime" required type="time"></label>
-            <label class="full">Location / area<input name="location" placeholder="Islamabad area / location"></label>
-            <label class="full">Message<textarea name="message" rows="4" placeholder="Tell us anything important about your request"></textarea></label>
+            <label>Service *<select name="service" id="appointmentService" required></select></label>
+            <label>Preferred Date *<input name="preferredDate" type="date" required></label>
+            <label>Preferred Time *<input name="preferredTime" type="time" required></label>
+            <label>Location / Area<input name="location" placeholder="Islamabad / area"></label>
+            <label class="full">Message<textarea name="message" rows="4" placeholder="Tell us anything relevant to your request"></textarea></label>
           </div>
-          <div class="form-foot">
-            <span>Your request is submitted for appointment handling.</span>
-            <button class="btn btn-primary" type="submit"><span class="submit-text">Request Appointment</span><span class="spinner" aria-hidden="true"></span></button>
-          </div>
-          <div class="form-message" id="appointmentMessage" role="status"></div>
+          <p class="privacy-note">Your information is submitted securely for appointment/request handling.</p>
+          <button class="btn btn-primary form-submit" type="submit"><span>Request Appointment</span><i class="spinner"></i></button>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
     <section class="section reviews-section" id="reviews">
       <div class="container">
-        <div class="section-heading review-heading reveal">
-          <div><span class="eyebrow dark">GOOGLE REVIEWS</span><h2>What customers <span>have shared.</span></h2></div>
-          <div class="google-summary"><strong>★ 4.9</strong><span>Based on 22 Google reviews</span><a data-maps href="#" target="_blank" rel="noopener">View on Google ↗</a></div>
-        </div>
-        <div class="reviews-placeholder reveal">
-          <div class="review-icon">★</div>
-          <div>
-            <h3>Authentic reviews only</h3>
-            <p>The website is ready for the client's authentic Google review text. Individual review content is not fabricated here. Add verified reviews to <code>reviews</code> in <code>script.js</code> when available.</p>
+        <div class="review-top">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span></span> Google reviews</p>
+            <h2>Real Feedback, <em>Directly From Google.</em></h2>
+            <p>Only authentic review text supplied or verified from the business listing should be added to the carousel.</p>
+          </div>
+          <div class="google-score reveal delay-1">
+            <div class="rating-stars">★★★★★</div><strong><span data-rating>4.9</span><small>/5</small></strong>
+            <span>Based on <span data-review-count>22</span> Google reviews</span>
+            <a class="text-link" data-maps href="#" target="_blank" rel="noopener">See all reviews on Google ↗</a>
           </div>
         </div>
-        <div class="review-track-wrap" id="reviewWrap" hidden>
-          <div class="review-track" id="reviewTrack"></div>
-          <div class="review-controls"><button id="reviewPrev" aria-label="Previous review">←</button><div id="reviewDots"></div><button id="reviewNext" aria-label="Next review">→</button></div>
+        <div class="review-carousel reveal">
+          <button class="carousel-btn prev" id="reviewPrev" type="button" aria-label="Previous review">‹</button>
+          <div class="review-window"><div class="review-track" id="reviewTrack"></div></div>
+          <button class="carousel-btn next" id="reviewNext" type="button" aria-label="Next review">›</button>
+          <div class="review-dots" id="reviewDots"></div>
         </div>
       </div>
     </section>
 
-    <section class="section gallery-section" id="gallery">
+    <section class="section gallery-section section-soft" id="gallery">
       <div class="container">
-        <div class="section-heading centered reveal">
-          <span class="eyebrow dark">IHCS VISUALS</span>
-          <h2>Care, comfort & <span>connection.</span></h2>
-          <p>Official client-provided promotional imagery is used throughout the site.</p>
+        <div class="section-heading reveal">
+          <p class="eyebrow"><span></span> Gallery</p>
+          <h2>See the Business <em>Up Close.</em></h2>
+          <p>Replace the local media placeholders with photographs/videos authorized by the client. Use the Google Maps listing to access the official business photo gallery.</p>
         </div>
         <div class="gallery-grid">
-          <button class="gallery-item wide reveal" data-image="assets/images/ihcs-promo-01.jpg" aria-label="Open IHCS promotional image">
-            <img src="assets/images/ihcs-promo-01.jpg" alt="IHCS official promotional graphic">
-            <span>Official IHCS profile</span>
-          </button>
-          <button class="gallery-item tall reveal delay-1" data-image="assets/images/ihcs-promo-02.jpg" aria-label="Open IHCS home healthcare image">
-            <img src="assets/images/ihcs-promo-02.jpg" alt="IHCS official home healthcare promotional graphic">
-            <span>Home healthcare</span>
-          </button>
-          <div class="gallery-copy reveal delay-2">
-            <span class="mini-label">CLIENT ASSETS</span>
-            <h3>Official imagery, modern presentation.</h3>
-            <p>Additional client-authorized photos and videos can be dropped into <code>assets/images</code> and <code>assets/videos</code> without changing the site structure.</p>
-            <a href="#appointment" class="text-link">Request an appointment <span>→</span></a>
-          </div>
+          <button class="gallery-item g1 reveal" data-lightbox="assets/images/image-01.svg" data-caption="Authorized business image"><img src="assets/images/image-01.svg" alt="Authorized business image" loading="lazy"><span>View</span></button>
+          <button class="gallery-item g2 reveal delay-1" data-lightbox="assets/images/image-02.svg" data-caption="Authorized business image"><img src="assets/images/image-02.svg" alt="Authorized business image" loading="lazy"><span>View</span></button>
+          <button class="gallery-item g3 reveal delay-2" data-lightbox="assets/images/image-03.svg" data-caption="Authorized business image"><img src="assets/images/image-03.svg" alt="Authorized business image" loading="lazy"><span>View</span></button>
+          <button class="gallery-item g4 reveal delay-3" data-lightbox="assets/images/image-04.svg" data-caption="Authorized business image"><img src="assets/images/image-04.svg" alt="Authorized business image" loading="lazy"><span>View</span></button>
+          <a class="gallery-map-card reveal" data-maps href="#" target="_blank" rel="noopener"><span>Google Maps</span><strong>Open official photos & listing ↗</strong><small>Use the business listing for the source of official Google photos and reviews.</small></a>
         </div>
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="cta-image"><img src="assets/images/ihcs-promo-02.jpg" alt="" aria-hidden="true"></div>
-      <div class="cta-overlay"></div>
-      <div class="container cta-content reveal">
-        <span class="eyebrow">ISLAMABAD HOME CARE SERVICES</span>
-        <h2>Professional care, <em>closer to home.</em></h2>
-        <p>Start with a call, WhatsApp message or appointment request.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#appointment">Request an Appointment</a>
-          <a class="btn btn-glass" data-whatsapp href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
-        </div>
+    <section class="video-section">
+      <div class="video-bg"><img src="assets/images/image-03.svg" alt="" loading="lazy"><div></div></div>
+      <div class="container video-content reveal">
+        <p class="eyebrow light"><span></span> Business media</p>
+        <h2>Care Should Feel <em>Human.</em></h2>
+        <p>Add the client's authorized video to <code>assets/videos/video-01.mp4</code> and it will appear here.</p>
+        <button class="video-play" id="videoOpen" type="button" aria-label="Open business video">▶</button>
       </div>
     </section>
 
     <section class="section contact-section" id="contact">
       <div class="container contact-grid">
-        <div class="contact-card reveal">
-          <span class="eyebrow dark">CONTACT IHCS</span>
-          <h2>We're easy to <span>reach.</span></h2>
-          <div class="contact-lines">
-            <a data-phone href="#"><span>☎</span><div><small>Phone</small><strong>+92 342 6881984</strong></div></a>
-            <a data-whatsapp href="#" target="_blank" rel="noopener"><span>◌</span><div><small>WhatsApp</small><strong>+92 342 6881984</strong></div></a>
-            <div><span>⌖</span><div><small>Address</small><strong>Tower, Lower Ground, Shop No. 7, Aria Street 2, Markaz FECHS E-11/2, E-11, Islamabad 44006, Pakistan</strong></div></div>
-            <div><span>◷</span><div><small>Opening hours</small><strong>Monday–Sunday · 10:00 AM–10:00 PM</strong></div></div>
+        <div class="contact-copy reveal">
+          <p class="eyebrow"><span></span> Contact</p>
+          <h2>Let’s Make It <em>Easy to Reach Us.</em></h2>
+          <p>Use the contact details below or send a message through the website.</p>
+          <div class="contact-list">
+            <a data-phone href="#"><span class="contact-symbol">☎</span><div><small>Phone</small><strong>+92 342 6881984</strong></div></a>
+            <a data-whatsapp href="#" target="_blank" rel="noopener"><span class="contact-symbol">◌</span><div><small>WhatsApp</small><strong>+92 342 6881984</strong></div></a>
+            <div><span class="contact-symbol">⌖</span><div><small>Address</small><strong data-address></strong></div></div>
+            <div><span class="contact-symbol">◷</span><div><small>Opening hours</small><strong>Monday – Sunday · 10:00 AM – 10:00 PM</strong></div></div>
           </div>
-          <a class="btn btn-dark" data-maps href="#" target="_blank" rel="noopener">Open Google Maps ↗</a>
+          <a class="btn btn-dark" data-maps href="#" target="_blank" rel="noopener">Open in Google Maps <span>↗</span></a>
         </div>
-
-        <form class="contact-form form-card reveal delay-1" id="contactForm" novalidate>
-          <div class="form-head"><span>CONTACT FORM</span><strong>Send a message</strong></div>
+        <form class="form-card contact-form reveal delay-1" data-form data-form-type="Contact" novalidate>
+          <div class="form-heading"><span>02</span><div><strong>Send a message</strong><small>We’ll pass your request to the configured backend.</small></div></div>
           <div class="form-grid">
-            <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
-            <label>Phone<input name="phone" required type="tel" autocomplete="tel" placeholder="+92 ..."></label>
+            <label>Name *<input name="fullName" autocomplete="name" required placeholder="Your name"></label>
+            <label>Phone *<input name="phone" type="tel" autocomplete="tel" required placeholder="+92 ..."></label>
             <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
-            <label>Subject<input name="subject" placeholder="How can we help?"></label>
-            <label class="full">Message<textarea name="message" required rows="6" placeholder="Write your message"></textarea></label>
+            <label>Subject *<input name="subject" required placeholder="How can we help?"></label>
+            <label class="full">Message *<textarea name="message" rows="6" required placeholder="Write your message"></textarea></label>
           </div>
-          <button class="btn btn-primary" type="submit"><span class="submit-text">Send Message</span><span class="spinner" aria-hidden="true"></span></button>
-          <div class="form-message" id="contactMessage" role="status"></div>
+          <button class="btn btn-primary form-submit" type="submit"><span>Send Message</span><i class="spinner"></i></button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <div class="container map-shell reveal">
+        <div class="map-copy">
+          <p class="eyebrow"><span></span> Find us</p>
+          <h2>Located in <em>E-11, Islamabad.</em></h2>
+          <p data-address></p>
+          <a class="btn btn-primary" data-maps href="#" target="_blank" rel="noopener">Get Directions ↗</a>
+        </div>
+        <div class="map-visual">
+          <iframe id="mapFrame" title="Google Maps location for Islamabad Home Care Services" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe>
+          <div class="map-fallback"><span>⌖</span><strong>Official Google Maps listing</strong><a data-maps href="#" target="_blank" rel="noopener">Open map ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feedback-section section-soft">
+      <div class="container feedback-card reveal">
+        <div><p class="eyebrow"><span></span> Quick feedback</p><h2>How was your <em>experience?</em></h2><p>Optional feedback can be sent to the same Google Sheets backend using <strong>Form Type = Feedback</strong>.</p></div>
+        <form class="mini-feedback" data-form data-form-type="Feedback" novalidate>
+          <label class="sr-only">Name<input name="fullName" placeholder="Name"></label>
+          <label class="sr-only">Email<input name="email" type="email" placeholder="Email"></label>
+          <label class="sr-only">Message<textarea name="message" required placeholder="Your feedback"></textarea></label>
+          <button class="btn btn-dark" type="submit">Send Feedback</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-top">
-      <div>
-        <a class="brand footer-brand" href="#home"><span class="brand-mark">IHCS</span><span class="brand-text"><strong>ISLAMABAD HOME CARE</strong><small>SERVICES PVT. LTD.</small></span></a>
-        <p>Professional healthcare at your doorstep.</p>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#home"><span class="brand-mark"><span></span><span></span></span><span class="brand-text"><strong>Islamabad</strong><small>Home Care Services</small></span></a>
+        <p>Home-care and patient-care service information, contact access and appointment requests for Islamabad Home Care Services.</p>
+        <a class="footer-map" data-maps href="#" target="_blank" rel="noopener">Open Google Maps ↗</a>
       </div>
-      <div class="footer-links"><a href="#about">About</a><a href="#services">Services</a><a href="#reviews">Reviews</a><a href="#gallery">Gallery</a><a href="#appointment">Appointment</a><a href="#contact">Contact</a></div>
-      <div class="footer-actions"><a data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a><a data-phone href="#">Call Now</a></div>
+      <div><h3>Explore</h3><a href="#about">About</a><a href="#services">Services</a><a href="#reviews">Reviews</a><a href="#gallery">Gallery</a><a href="#appointment">Appointment</a></div>
+      <div><h3>Contact</h3><a data-phone href="#">+92 342 6881984</a><a data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a><span data-address></span></div>
+      <div><h3>Hours</h3><span>Monday – Sunday</span><strong>10:00 AM – 10:00 PM</strong><small>Open daily</small></div>
     </div>
-    <div class="container footer-bottom">
-      <span>© 2026 Islamabad Home Care Services Pvt. Ltd. All Rights Reserved.</span>
-      <span>Website designed & developed by <strong>Abdullah Afridi</strong></span>
-    </div>
+    <div class="container footer-bottom"><span>© 2026 Islamabad Home Care Services. All Rights Reserved.</span><span>Website designed &amp; developed <strong>Abdullah Afridi</strong></span></div>
   </footer>
+
+  <div class="floating-actions">
+    <a class="floating-wa" data-whatsapp href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">◌</a>
+    <button id="backTop" type="button" aria-label="Back to top">↑</button>
+  </div>
 
   <div class="mobile-actions">
     <a data-phone href="#"><span>☎</span>Call</a>
     <a data-whatsapp href="#" target="_blank" rel="noopener"><span>◌</span>WhatsApp</a>
-    <a href="#appointment"><span>＋</span>Appointment</a>
+    <a href="#appointment"><span>✎</span>Appointment</a>
   </div>
 
-  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button id="lightboxClose" aria-label="Close image">×</button>
-    <img id="lightboxImage" src="" alt="">
-  </div>
-
-  <div class="success-modal" id="successModal" aria-hidden="true">
+  <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
     <div class="modal-card">
-      <button id="modalClose" aria-label="Close">×</button>
-      <div class="modal-check">✓</div>
-      <h2>Request received</h2>
-      <p>Thank you. The form has been submitted successfully. The team can contact you to discuss and confirm your request.</p>
-      <button class="btn btn-primary" id="modalDone">Done</button>
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+      <div class="success-icon">✓</div>
+      <p class="eyebrow"><span></span> Submitted</p>
+      <h2 id="successTitle">Appointment Request Received</h2>
+      <p>Thank you. Our team will contact you shortly to confirm your request.</p>
+      <button class="btn btn-dark" type="button" data-close-modal>Close</button>
     </div>
   </div>
 
+  <div class="modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <div class="modal-backdrop" data-close-lightbox></div>
+    <div class="lightbox-card"><button class="modal-close" type="button" data-close-lightbox aria-label="Close">×</button><img id="lightboxImage" src="" alt=""><p id="lightboxCaption"></p></div>
+  </div>
+
+  <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Business video" hidden>
+    <div class="modal-backdrop" data-close-video></div>
+    <div class="video-modal-card"><button class="modal-close" type="button" data-close-video aria-label="Close">×</button><video id="businessVideo" controls preload="metadata" poster="assets/images/image-03.svg"><source src="assets/videos/video-01.mp4" type="video/mp4"></video><p>Add the client's authorized video at <code>assets/videos/video-01.mp4</code>.</p></div>
+  </div>
+
+  <script type="application/ld+json" id="businessSchema"></script>
   <script src="script.js" defer></script>
 </body>
 </html>
