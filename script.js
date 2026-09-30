@@ -28,7 +28,11 @@ const services = [
 ];
 
 /* Paste ONLY authentic Google reviews here: { name, rating, text, date } */
-const reviews = [];
+const reviews = [
+  {name:"[Noor Khan90]",rating:"[4 stars]",text: "[Very clean environment with trained staff. Service fast aur reliable hai.]"}
+
+  
+];
 
 /* Client-authorized media. type: "image" | "video" */
 const gallery = [
