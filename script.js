@@ -19,12 +19,12 @@ const CONFIG = {
 
 /* Only add services the client has verified. Placeholders are NOT real claims. */
 const services = [
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "🩺", image: "assets/images/service-01.jpg" },
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "❤️", image: "assets/images/service-02.jpg" },
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "🏠", image: "assets/images/service-03.jpg" },
-    { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "✚", image: "assets/images/service-01.jpg" },
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "♡", image: "assets/images/service-02.jpg" },
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "⌂", image: "assets/images/service-03.jpg" }
+  { title: "[Home Nursing Care]", description: "[Professional nurses provide healthcare assistance to patients at home, including routine monitoring, medication-related care, and support during recovery.]", icon: "🩺", image: "assets/images/service-01.jpg" },
+  { title: "[Patient & Elderly Care]", description: "[Trained attendants assist patients with everyday needs such as feeding, hygiene, mobility, changing positions, and general supervision. Personalized assistance for senior citizens who need help with daily activities, mobility, medication reminders and companionship.]", icon: "❤️", image: "assets/images/service-02.jpg" },
+  { title: "[Home Doctor Visits]", description: "[A doctor can potentially visit the patient's home for consultation and basic medical assessment, which is a common service offered by Islamabad home-healthcare providers.]", icon: "🏠", image: "assets/images/service-03.jpg" },
+    { title: "[Medical Procedures at Home]", description: "[Essential medical procedures can be provided at home by qualified healthcare professionals when prescribed or medically appropriate. Services may include injections, IV/drip support, wound dressing, catheter care, and vital-sign monitoring.]", icon: "💉", image: "assets/images/service-01.jpg" },
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "🧑‍🦽", image: "assets/images/service-02.jpg" },
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "👶", image: "assets/images/service-03.jpg" }
 ];
 
 /* Paste ONLY authentic Google reviews here: { name, rating, text, date } */
