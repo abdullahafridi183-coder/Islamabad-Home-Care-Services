@@ -19,7 +19,10 @@ const CONFIG = {
 
 /* Only add services the client has verified. Placeholders are NOT real claims. */
 const services = [
-  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "✚", image: "assets/images/service-01.jpg" },
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "🩺", image: "assets/images/service-01.jpg" },
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "❤️", image: "assets/images/service-02.jpg" },
+  { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "🏠", image: "assets/images/service-03.jpg" },
+    { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "✚", image: "assets/images/service-01.jpg" },
   { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "♡", image: "assets/images/service-02.jpg" },
   { title: "[ADD VERIFIED SERVICE]", description: "[ADD VERIFIED DESCRIPTION]", icon: "⌂", image: "assets/images/service-03.jpg" }
 ];
