@@ -50,9 +50,9 @@ const gallery = [
 ];
 
 const why = [
-  ["✚", "Professional Care", "[ADD VERIFIED DETAIL]"],
+  ["✚", "Professional Care", "[Our care is delivered with professionalism, respect, and attention to each patient's individual needs. We focus on providing dependable support while keeping families informed and comfortable throughout the care process.]"],
   ["☎", "Convenient Communication", "Reach us by phone or WhatsApp every day."],
-  ["♡", "Patient-Focused Support", "[ADD VERIFIED DETAIL]"],
+  ["♡", "Patient-Focused Support", "[Every patient deserves compassionate and personalized attention. We take the time to understand each person's needs and provide thoughtful support that helps patients and their families feel more comfortable at home.]"],
   ["⌖", "Accessible Location", "Find us in Markaz FECHS E-11/2, Islamabad."]
 ];
 
