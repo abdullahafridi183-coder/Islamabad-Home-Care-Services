@@ -29,7 +29,7 @@ const services = [
 
 /* Paste ONLY authentic Google reviews here: { name, rating, text, date } */
 const reviews = [
-  {name:"[Noor Khan90]",rating:"[4 stars]",text: "[Very clean environment with trained staff. Service fast aur reliable hai.]"}
+  {name:"[Noor Khan90]",rating:"[★★★]",text: "[Very clean environment with trained staff. Service fast aur reliable hai.]"}
 
   
 ];
@@ -118,7 +118,7 @@ function initCarousel() {
   }
   let cur = 0, timer;
   reviews.forEach((r, i) => {
-    track.append(el("div", "slide", `<blockquote><span class="stars" aria-label="${r.rating} out of 5 stars">${"★".repeat(r.rating)}</span><p>${esc(r.text)}</p>
+    track.append(el("div", "slide", `<blockquote><span class="stars" aria-label="${r.rating} out of 5 stars">${"".repeat(r.rating)}</span><p>${esc(r.text)}</p>
       <footer>${esc(r.name)} ${r.date ? `<small>· ${esc(r.date)}</small>` : ""}</footer></blockquote>`));
     const d = el("button"); d.setAttribute("aria-label", `Review ${i + 1}`); d.onclick = () => go(i); dots.append(d);
   });
